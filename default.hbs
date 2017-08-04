@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    {{!-- Document Settings --}}
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    {{!-- Base Meta --}}
+    <title>{{meta_title}}</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    {{!-- Styles'n'Scripts --}}
+    <link rel="preload" as="font" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700">
+    <link rel="stylesheet" href="https://unpkg.com/tachyons@4.7.0/css/tachyons.min.css"/>
+    <link rel="stylesheet" type="text/css" href="{{asset "built/screen.css"}}" />
+
+
+    {{!-- This tag outputes SEO meta+structured data and other important settings --}}
+    {{ghost_head}}
+
+</head>
+<body class="{{body_class}}">
+
+    <div class="site-wrapper">
+
+        {{!-- All the main content gets inserted here, index.hbs, post.hbs, etc --}}
+        {{{body}}}
+
+        {{!-- The footer at the very bottom of the screen --}}
+        <footer class="bg-white ph3 ph5-ns pv5 pv6-ns bt b--black-10">
+          <div class="mw9 center">
+            <div class="mb5 lh-copy">
+              <a class="dib v-mid link dim mr3 mt1" href="https://datproject.org" title="Dat Project">
+                <img src="{{@blog.icon}}" class=" dat-icon dib br-100" alt="Dat Project">
+              </a>
+              <a class="f3 link dat-neutral dim b dib mr3 mb3" href="{{@blog.url}}" title="Dat Public Data Archives">
+                Dat Blog
+              </a>
+              <a class="f3 link dat-neutral dim b dib mr3 mb3" href="https://docs.datproject.org" title="Dat Project Documentation">
+                Dat Docs
+              </a>
+            </div>
+            <div class="mt4">
+              <a class="f3 ba dat-neutral b--dat-neutral no-underline grow b inline-flex items-center mr3 mb3 pv3 ph4" href="https://twitter.com/dat_project" title="Follow us on Twitter">
+                <div class="dib dat-icon pr2 pt1">
+                {{> "icons/dat-happy"}}</div>
+                <span>Follow @dat_project</span>
+              </a>
+              <a class="f3 ba dat-neutral b--dat-neutral no-underline grow b inline-flex items-center mr3 mb3 pv3 ph4" href="http://chat.datproject.org" title="Join our Chat">
+                  <div class="dib dat-icon pr2 pt1">{{> "icons/dat-question"}}</div>
+                  <span>
+                    Curious? Join Our Chat
+                  </span>
+              </a>
+              <a class="f3 ba dat-neutral b--dat-neutral no-underline grow b inline-flex items-center mb3 pv3 ph4" href="https://donate.datproject.org" title="Donate to Code for Science & Society">
+                <div class="dib dat-icon pt1 pr2">
+                  {{> "icons/dat-star"}}
+                </div>
+                <span>Donate to Support Public Data</span>
+              </a>
+            </div>
+            <p class="mt4 f3 measure copy lh-copy">
+              Dat project flourishes because of you, thank you!
+              This is the bottom of our blog page.
+              Did you count the number of hexagons?
+              <br><br>
+              Have questions? Join our chat or ask on <a href="http://twitter.com/dat_project" class="no-underline underline-hover dat-green">Twitter</a> or <a href="http://github.com/datproject" class="no-underline underline-hover dat-green">Github</a>.
+              <br><br>
+              <a href="{{@blog.url}}">{{@blog.title}}</a> &copy; {{date format="YYYY"}}
+            </p>
+          </div>
+        </footer>
+    </div>
+
+    {{!-- The big email subscribe modal content --}}
+    {{#if @labs.subscribers}}
+    <div id="subscribe" class="subscribe-overlay">
+        <a class="subscribe-overlay-close" href="#"></a>
+        <div class="subscribe-overlay-content">
+            {{#if @blog.logo}}
+                <img class="subscribe-overlay-logo" src="{{@blog.logo}}" alt="{{@blog.title}}" />
+            {{/if}}
+            <h1 class="subscribe-overlay-title">Subscribe to {{@blog.title}}</h1>
+            <p class="subscribe-overlay-description">Stay up to date! Get all the latest &amp; greatest posts delivered straight to your inbox</p>
+            {{subscribe_form placeholder="youremail@example.com"}}
+        </div>
+    </div>
+    {{/if}}
+
+    {{!-- jQuery + Fitvids, which makes all video embeds responsive --}}
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="{{asset "js/jquery.fitvids.js"}}"></script>
+
+    {{#if pagination.pages}}
+    <script>
+        var maxPages = parseInt('{{pagination.pages}}');
+    </script>
+    <script src="{{asset "js/infinitescroll.js"}}"></script>
+    {{/if}}
+
+    {{!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. --}}
+    {{{block "scripts"}}}
+
+    {{!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag --}}
+    {{ghost_foot}}
+
+</body>
+</html>
