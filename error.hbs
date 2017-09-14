@@ -10,22 +10,14 @@ This error template is used for all 400/500 errors which might occur on your sit
     <title>{{meta_title}}</title>
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preload" as="font" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700">
+    <link rel="stylesheet" href="https://unpkg.com/tachyons@4.7.0/css/tachyons.min.css"/>
     <link rel="stylesheet" type="text/css" href="{{asset "built/screen.css"}}" />
 </head>
 <body class="error-template">
     <div class="site-wrapper">
 
-        <header class="site-header outer {{#if feature_image}}" style="background-image: url({{feature_image}}){{else}}no-cover{{/if}}">
-            <div class="inner">
-                <nav class="site-nav-center">
-                    {{#if @blog.logo}}
-                        <a class="site-nav-logo" href="{{@blog.url}}"><img src="{{@blog.logo}}" alt="{{@blog.title}}" /></a>
-                    {{else}}
-                        <a class="site-nav-logo" href="{{@blog.url}}">{{@blog.title}}</a>
-                    {{/if}}
-                </nav>
-            </div>
-        </header>
+        {{> "site-nav"}}
 
         <main id="site-main" class="site-main outer" role="main">
             <div class="inner">
@@ -68,6 +60,51 @@ This error template is used for all 400/500 errors which might occur on your sit
             </div>
         </aside>
         {{/get}}
+
+         <footer class="bg-white ph3 ph5-ns pv5 pv6-ns bt b--black-10">
+          <div class="mw9 center">
+            <div class="mb5 lh-copy">
+              <a class="dib v-mid link dim mr3 mt1" href="https://datproject.org" title="Dat Project homepage">
+                <img src="{{@blog.icon}}" class=" dat-icon dib br-100" alt="Dat Project">
+              </a>
+              <a class="f3 link dat-neutral dim b dib mr3 mb3" href="{{@blog.url}}" title="Dat Project Blog">
+                Dat Blog
+              </a>
+              <a class="f3 link dat-neutral dim b dib mr3 mb3" href="https://docs.datproject.org" title="Dat Project Documentation">
+                Dat Docs
+              </a>
+            </div>
+            <div class="mt4">
+              <a class="f3 ba dat-neutral b--dat-neutral no-underline grow b inline-flex items-center mr3 mb3 pv3 ph4" href="https://twitter.com/dat_project" title="Follow us on Twitter">
+                <div class="dib dat-icon pr2 pt1">
+                {{> "icons/dat-happy"}}</div>
+                <span>Follow @dat_project</span>
+              </a>
+              <a class="f3 ba dat-neutral b--dat-neutral no-underline grow b inline-flex items-center mr3 mb3 pv3 ph4" href="http://chat.datproject.org" title="Join our Chat">
+                  <div class="dib dat-icon pr2 pt1">{{> "icons/dat-question"}}</div>
+                  <span>
+                    Curious? Join Our Chat
+                  </span>
+              </a>
+              <a class="f3 ba dat-neutral b--dat-neutral no-underline grow b inline-flex items-center mb3 pv3 ph4" href="https://donate.datproject.org" title="Donate to Code for Science & Society">
+                <div class="dib dat-icon pt1 pr2">
+                  {{> "icons/dat-star"}}
+                </div>
+                <span>Donate to Support Public Data</span>
+              </a>
+            </div>
+            <p class="mt4 f3 measure copy lh-copy">
+              Dat project flourishes because of you, thank you!
+              You made it all the way to the bottom.
+              Did you count the number of hexagons?
+              <br><br>
+              Have questions? Join our chat or ask on <a href="http://twitter.com/dat_project" class="no-underline underline-hover dat-green">Twitter</a> or <a href="http://github.com/datproject" class="no-underline underline-hover dat-green">Github</a>.
+              <br><br>
+              <a href="{{@blog.url}}">{{@blog.title}}</a> &copy; {{date format="YYYY"}}.
+              Blogging via <a href="https://ghost.org" target="_blank">Ghost</a>.
+            </p>
+          </div>
+        </footer>
 
     </div>
 </body>
