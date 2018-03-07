@@ -721,32 +721,21 @@ Super neat trick courtesy of @JoelDrapper
 }
 
 .post-full-content blockquote {
-    margin: 0 0 1.5em 0;
-    padding: 1.5em 0;
-    border: 0;
-    color: var(--blue);
-    font-size: 3rem;
-    line-height: 1.6em;
-    text-align: center;
-}
-
-.post-full-content blockquote:before {
-    content: open-quote;
+    margin: 0 0 1.5em;
+    padding: 0 1.5em;
+    border-left: var(--blue) 3px solid;
 }
 
 .post-full-content blockquote p {
-    margin: 0;
+    margin: 0 0 1em 0;
+    color: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    font-style: italic;
 }
 
-@media (min-width: 1000px) {
-    .post-full-content blockquote {
-        max-width: 1060px;
-        width: 100vw;
-    }
-}
-
-.post-full-content blockquote + blockquote {
-    padding-top: 0;
+.post-full-content blockquote p:last-child {
+    margin-bottom: 0;
 }
 
 .post-full-content code {
@@ -829,7 +818,27 @@ Super neat trick courtesy of @JoelDrapper
 }
 
 .post-full-content h5 {
-    font-size: 1.4rem;
+    display: block;
+    margin: 0.5em 0;
+    padding: 1em 0 1.5em;
+    border: 0;
+    color: var(--blue);
+    font-family: Georgia,serif;
+    font-size: 3.2rem;
+    line-height: 1.35em;
+    text-align: center;
+}
+@media (min-width: 1180px) {
+    .post-full-content h5 {
+        max-width: 1060px;
+        width: 100vw;
+    }
+}
+@media (max-width: 500px) {
+    .post-full-content h5 {
+        padding: 0 0 0.5em;
+        font-size: 2.2rem;
+    }
 }
 
 .post-full-content h6 {
