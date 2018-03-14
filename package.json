@@ -1,5 +1,5 @@
 {
-    "name": "dat-casper",
+    "name": "dat-casper-updated",
     "description": "The default personal blogging theme for Ghost. Beautiful, minimal and responsive.",
     "demo": "https://demo.ghost.io",
     "version": "2.1.9",
@@ -48,6 +48,6 @@
         "postcss-easy-import": "1.0.1"
     },
     "config": {
-        "posts_per_page": 25
+        "posts_per_page": 15
     }
 }
