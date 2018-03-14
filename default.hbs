@@ -13,7 +13,6 @@
 
     {{!-- Styles'n'Scripts --}}
     <link rel="preload" as="font" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700">
-    <link rel="stylesheet" href="https://unpkg.com/tachyons@4.7.0/css/tachyons.min.css"/>
     <link rel="stylesheet" type="text/css" href="{{asset "built/screen.css"}}" />
 
 
@@ -90,13 +89,9 @@
     </div>
     {{/if}}
 
-    {{!-- jQuery + Fitvids, which makes all video embeds responsive
-    <script
-        src="https://code.jquery.com/jquery-3.2.1.min.js"
-        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-        crossorigin="anonymous">
-    </script>
-    <script type="text/javascript" src="{{asset "js/jquery.fitvids.js"}}"></script> --}}
+    {{!-- jQuery --}}
+    <script type="text/javascript" src="{{asset "js/jquery.min.js"}}"></script>
+    {{!-- <script type="text/javascript" src="{{asset "js/jquery.fitvids.js"}}"></script> --}}
 
     {{#if pagination.pages}}
     <script>

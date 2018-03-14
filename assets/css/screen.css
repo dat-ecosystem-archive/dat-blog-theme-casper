@@ -25,6 +25,7 @@ production stylesheet in assets/built/screen.css
 
 /* 1. Global - Set up the things
 /* ---------------------------------------------------------- */
+@import "tachyons.min.css";
 @import "global.css";
 
 body {
@@ -663,6 +664,10 @@ The first (most recent) post in the list is styled to be bigger than the others 
 .post-full-comments,
 .footnotes {
     min-width: 100%;
+}
+
+.kg-card-markdown > blockquote {
+  margin-right:auto; /* left align flex item */
 }
 
 .post-template .kg-card-markdown > p:first-child {
